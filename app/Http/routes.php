@@ -20,6 +20,5 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::resource('profile','ProfileController');
 Route::resource('product','ProductController');
 Route::resource('invoice','InvoiceController');
