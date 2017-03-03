@@ -32,8 +32,8 @@
 			@if (Auth::check())
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/invoice') }}">Invoice</a></li>
-					<li><a href="{{ url('/product') }}">Product</a></li>
+					<li><a href="{{ url('/invoice') }}">Invoices</a></li>
+					<li><a href="{{ url('/product') }}">Products</a></li>
 				</ul>
 			@endif
 				<ul class="nav navbar-nav navbar-right">

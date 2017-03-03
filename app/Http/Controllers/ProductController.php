@@ -18,7 +18,8 @@ class ProductController extends Controller {
 	 */
 	public function index()
 	{
-		return view ('product.index');
+		$products = \App\Product::All();
+		return view ('product.index',compact('products'));
 	}
 
 	/**
@@ -36,9 +37,14 @@ class ProductController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		\App\Product::create([
+			'name' => $request['name'],
+			'price' => $request['price'],
+			'stock' => $request['stock'],
+		]);
+		return redirect('/product')->with('message','store');
 	}
 
 	/**
@@ -60,7 +66,8 @@ class ProductController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$product = \App\Product::find($id);
+		return view ('product.edit',['product'=>$product]);
 	}
 
 	/**
@@ -69,9 +76,12 @@ class ProductController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$product = \App\Product::find($id);
+		$product->fill($request->all());
+		$product->save();
+		return redirect('/product');
 	}
 
 	/**
@@ -82,7 +92,8 @@ class ProductController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		\App\Product::destroy($id);
+		return redirect('/product');
 	}
 
 }
