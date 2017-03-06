@@ -32,7 +32,7 @@
 			@if (Auth::check())
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/invoice') }}">Invoices</a></li>
+					<li>{!!link_to_route('invoice.show', $title = 'Invoices', $parameters = Auth::user()->id )!!}</li>
 					<li><a href="{{ url('/product') }}">Products</a></li>
 				</ul>
 			@endif

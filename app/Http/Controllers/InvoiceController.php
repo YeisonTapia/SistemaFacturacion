@@ -18,7 +18,8 @@ class InvoiceController extends Controller {
 	 */
 	public function index()
 	{
-		return view ('invoice.index');
+		$invoices = \App\invoice::All();
+		return view ('invoice.index',compact('invoices'));
 	}
 
 	/**
@@ -28,7 +29,7 @@ class InvoiceController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view ('invoice.create');
 	}
 
 	/**
@@ -36,9 +37,12 @@ class InvoiceController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		\App\invoice::create([
+			'user_id' => $request['user_id'],
+		]);
+		return back();
 	}
 
 	/**
@@ -49,7 +53,9 @@ class InvoiceController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$user = \App\User::find($id);
+		$invoices = $user->invoices;
+		return view ('invoice.show',compact('invoices'));
 	}
 
 	/**
@@ -60,7 +66,8 @@ class InvoiceController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$products = \App\product::All();
+		return view ('invoice.edit',compact('products'));
 	}
 
 	/**

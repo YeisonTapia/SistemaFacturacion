@@ -17,17 +17,17 @@
         <div class="panel-body">
 					<table class="table table-hover">
 						<thead>
-							<th>Id</th>
-							<th>Name</th>
-							<th>Price</th>
-							<th>Stock</th>
-							<th>Options</th>
+							<th>#</th>
+							<th>NAME</th>
+							<th>PRICE</th>
+							<th>STOCK</th>
+							<th>OPTIONS</th>
 						</thead>
 						@foreach($products as $product)
 						<tbody>
 							<td>{{$product->id}}</td>
 							<td>{{$product->name}}</td>
-							<td>{{$product->price}}</td>
+							<td>$ {{$product->price}}</td>
 							<td>{{$product->stock}}</td>
 							<td>{!!link_to_route('product.edit', $title = 'Edit', $parameters = $product->id ,$attributes = ['class'=>'btn btn-primary col-md-12'])!!}</td>
 							</tbody>
