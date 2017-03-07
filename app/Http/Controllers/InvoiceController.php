@@ -66,10 +66,18 @@ class InvoiceController extends Controller {
 	 */
 	public function edit($id)
 	{
+		$ide=$id;
 		$products = \App\product::All();
-		return view ('invoice.edit',compact('products'));
+		return view ('invoice.edit',compact('products','ide'));
 	}
 
+
+public function getPrice (Request $request, $id){
+	if ($request->ajax()){
+		$price = \App\product::prices($id);
+		return response()->json($price);
+	}
+}
 	/**
 	 * Update the specified resource in storage.
 	 *

@@ -22,3 +22,4 @@ Route::controllers([
 
 Route::resource('product','ProductController');
 Route::resource('invoice','InvoiceController');
+Route::resource('detail','DetailController');
